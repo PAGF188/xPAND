@@ -8,3 +8,8 @@ xPAND can be run on any detector as long as you have the initial detections in C
 ```
 
 Make sure that you have previously obtained the initial detections (candidate pseudo-labels in COCO format) and have trained the ClassConfirmation (see *xpand/ClassConfirmation/README.md*) and BoxConfirmation (see *xpand/BoxConfirmation/README.md*) modules. The output will be the final pseudo-labels with which you can perform the final train of your detector.
+
+## To-Do List
+
+- [ ] Release the Singularity images
+- [ ] Upload the pre-trained models for class and box confirmation
