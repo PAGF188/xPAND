@@ -32,5 +32,5 @@ The expected path to CC and BC weights is */models/LC_COCO/* and */models/BC_COC
 
 ## To-Do List
 
-- [ ] Release detector folder
-- [ ] Upload other pre-trained models for class and box confirmation
+- [ ] Release detectors folder
+- [ ] Upload other pre-trained models for Class and Box Confirmation
