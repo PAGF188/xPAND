@@ -1,0 +1,43 @@
+DATASETS:
+  DATA_FOLDER: /datasets/voc_coco/images
+  IMG_FORMAT: BGR
+  NUM_WORKERS: 32
+  SUPPORT_AVERAGE_TEST: true
+  SUPPORT_JSON: /datasets/voc_coco/voc_2007_trainval_novel1_10shot_seed0.json
+  SUPPORT_SIZE: 10
+  SUPPORT_TEST_JSON: /datasets/voc_coco/voc_2007_test_novel1.json
+  TEST_JSON: /datasets/voc_coco/voc_2007_test_novel1.json
+  TRAIN_JSON: /datasets/voc_coco/voc_2007_trainval_novel1_10shot_seed0.json
+MODEL:
+  FINAL_TOKENS_AVERAGE_POOLING: false
+  FINAL_TOKENS_NUMBER: 384
+  FREEZE_BACKBONE: true
+  META_ARCHITECTURE: facebook/dino-vits8
+  MODEL_CLASS: models.LabelConfirmation3
+  MODEL_FAMILY: DINO
+MODEL_WEIGHTS: /models/LC_VOC/base1/final_model_epoch_9.pth
+OUTPUT_DIR: /models/LC_VOC/1split_10shot_0seed/
+SOLVER:
+  BASE_LR: 0.0001
+  BATCH_SIZE: 24
+  EPOCH: 10
+  ITER_HISTORY_PERIOD: 1
+  LOSS1:
+    ACTIVE: true
+    MARGIN: 1
+    REDUCTION: mean
+    TYPE: torch.nn.TripletMarginLoss
+    WEIGHT: 1
+  LOSS2:
+    REDUCTION: mean
+    TYPE: torch.nn.CrossEntropyLoss
+    WEIGHT: 1
+  OPTIMIZER:
+    TYPE: torch.optim.AdamW
+    WEIGHT_DECAY: 0.01
+  SCHEDULER:
+    GAMMA: 0.1
+    STEP_SIZE: 5
+    TYPE: torch.optim.lr_scheduler.StepLR
+TEST_BATCH_SIZE: 32
+TYPE: train

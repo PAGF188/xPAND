@@ -1,0 +1,13 @@
+MODEL:
+  MODEL_FAMILY: "MAE"
+  META_ARCHITECTURE: "facebook/vit-mae-base"
+  FINAL_TOKENS_AVERAGE_POOLING: True
+  FINAL_TOKENS_NUMBER: 768  # MAE
+  FREEZE_BACKBONE: True
+DATASETS:
+  DETS_JSON: "datasets/trainvalno5k_novel.json"
+  DATA_FOLDER: "datasets/coco/trainval2014"
+  IMG_FORMAT: "BGR"
+  SUPPORT_AVERAGE_TEST: True
+  NUM_WORKERS: 32
+TEST_BATCH_SIZE: 32

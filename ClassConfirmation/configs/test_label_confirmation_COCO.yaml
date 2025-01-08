@@ -1,0 +1,20 @@
+DATASETS:
+  DATA_FOLDER: /datasets/coco/trainval2014
+  DATA_FOLDER_PSEUDOS: /datasets/coco/trainval2014
+  DATA_FOLDER_SUPPORT: /datasets/coco/trainval2014
+  IMG_FORMAT: BGR
+  NUM_WORKERS: 32
+  PSEUDOS_JSON: /models/imted/coco/mining_iter2/imTED_30shot_seed0/imTED_30shot_seed0_trainval.bbox_filtrado_base2_nms_filt_score0.2.json
+  SUPPORT_AVERAGE_TEST: true
+  SUPPORT_JSON: /datasets/dataset_fsod/30shot_seed0/full_box_30shot_all_trainval_novel.json
+MODEL:
+  FINAL_TOKENS_AVERAGE_POOLING: false
+  FINAL_TOKENS_NUMBER: 384
+  FREEZE_BACKBONE: true
+  META_ARCHITECTURE: facebook/dino-vits8
+  MODEL_CLASS: models.LabelConfirmation3
+  MODEL_FAMILY: DINO
+MODEL_WEIGHTS: /models/LC_coco_finetunings/30shot_seed0/final_model_epoch_9.pth
+OUTPUT_DIR: /models/imted/coco/mining_iter2/imTED_30shot_seed0/LC_OUPUT/
+SAVE_NAME: imTED_30shot_seed0_trainval.bbox_filtrado_base2_nms_filt_score0.2_LC_OUPUT.json
+TEST_BATCH_SIZE: 32

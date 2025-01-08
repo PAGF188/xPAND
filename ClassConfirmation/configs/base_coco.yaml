@@ -1,0 +1,49 @@
+MODEL:
+  MODEL_CLASS: "models.LabelConfirmation3"
+  MODEL_FAMILY: "DINO"
+  META_ARCHITECTURE: "facebook/dino-vits8"
+  # MODEL_FAMILY: "MAE"
+  # META_ARCHITECTURE: "facebook/vit-mae-base"
+  FINAL_TOKENS_AVERAGE_POOLING: False
+  FINAL_TOKENS_NUMBER: 384  # DINO
+  #FINAL_TOKENS_NUMBER: 768  # MAE
+  FREEZE_BACKBONE: True
+DATASETS:
+  TRAIN_JSON: "/datasets/dataset_fsod/trainvalno5k_base.json"
+  SUPPORT_JSON: "/datasets/dataset_fsod/trainvalno5k_base.json"
+  TEST_JSON: "/datasets/dataset_fsod/test/5k_base.json"
+  SUPPORT_TEST_JSON: "/datasets/dataset_fsod/test/5k_base.json"
+  DATA_FOLDER: "/datasets/coco/trainval2014"
+  IMG_FORMAT: "BGR"
+  SUPPORT_SIZE: 10
+  SUPPORT_AVERAGE_TEST: True
+  NUM_WORKERS: 32
+SOLVER:
+  BATCH_SIZE: 24
+  EPOCH: 10
+  BASE_LR: 0.0001
+  OPTIMIZER: 
+    # TYPE: torch.optim.SGD
+    # WEIGHT_DECAY: 0.0001
+    # MOMENTUM: 0.9
+    TYPE: torch.optim.Adam
+    WEIGHT_DECAY: 0
+  SCHEDULER:
+    TYPE: torch.optim.lr_scheduler.StepLR
+    STEP_SIZE: 5
+    GAMMA: 0.1
+  LOSS1: 
+    ACTIVE: True
+    TYPE: "torch.nn.TripletMarginLoss" 
+    REDUCTION: "mean"  # mean
+    WEIGHT: 1
+    MARGIN: 1
+  LOSS2: 
+    TYPE: "torch.nn.CrossEntropyLoss"
+    REDUCTION: "mean"
+    WEIGHT: 1
+  ITER_HISTORY_PERIOD: 20
+OUTPUT_DIR: "/models/LC_COCO/base/"
+TYPE: "train"   # train/test
+MODEL_WEIGHTS: None
+TEST_BATCH_SIZE: 32
